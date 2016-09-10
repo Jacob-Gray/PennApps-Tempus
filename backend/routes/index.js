@@ -14,6 +14,10 @@ router.get('/', function(req, res) {
 	});
 });
 
+router.get('/login',function(req,res,next){
+	res.render('home');
+})
+
 router.post('/login', function(req, res, next) {
 	var email = req.body.email;
 	var password = req.body.password;
@@ -28,6 +32,7 @@ router.post('/login', function(req, res, next) {
 				if (document.password === password) {
 					req.session.username = email;
 					res.render('index', {
+						logged_in: req.session.username !== undefined,
 						title: document.name
 					});
 				}

@@ -13,6 +13,7 @@ var addTask = require('./routes/addTask');
 var deleteTask = require('./routes/deleteTask');
 var viewTask = require('./routes/viewTask');
 var addSchedule = require('./routes/addSchedule');
+var startTask = require('./routes/startTask');
 
 
 var app = express();
@@ -41,6 +42,7 @@ app.use('/addTask',addTask);
 app.use('/addSchedule',addSchedule);
 app.use('/deleteTask',deleteTask);
 app.use('/viewTask',viewTask);
+app.use('/startTask',startTask);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

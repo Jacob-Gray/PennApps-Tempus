@@ -1,6 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var http = require('http').Server(router);
+var io = require('socket.io')(http);
+
 var MongoClient = require('mongodb').MongoClient;
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
 
 router.post('/', function(req, res) {
   if(req.session && req.session.username){
