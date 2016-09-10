@@ -15,14 +15,7 @@ router.get('/', function(req, res) {
 	});
 });
 
-router.get('/login',function(req,res,next){
-	res.render('index', {
-		logged_in: req.session.username !== undefined,
-		title: "timer",
-		user: req.session.user
-	});
-})
-router.get('/signup',function(req,res,next){
+router.get('/*',function(req,res,next){
 	res.render('index', {
 		logged_in: req.session.username !== undefined,
 		title: "timer",
