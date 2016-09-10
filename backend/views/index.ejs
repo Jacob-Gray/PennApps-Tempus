@@ -1,12 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="atari" ng-controller="page">
   <head>
     <title><%= title %></title>
+    <!--Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
+    <!--StyleSheet -->
     <link rel='stylesheet' href='/stylesheets/app.css' />
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!-- JavaScript -->
+    <script src="/javascripts/angular/angular.min.js"></script>
+    <script src="/javascripts/angular/angular-route.min.js"></script>
+    <script src="/javascripts/angular/angular-animate.min.js"></script>
+    <script src="/javascripts/app.js"></script>
   </head>
   <body>
-
+    <div class="content flip" ng-view></div>
   </body>
+  <% if(logged_in){ %>
+
+  <% } else{ %>
+    <script type="text/ng-template" id="login.html">
+      <% include login %>
+    </script>
+    <script type="text/ng-template" id="home.html">
+      <% include home %>
+    </script>
+  <% } %>
 </html>
