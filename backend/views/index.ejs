@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="atari" ng-controller="page">
+<html ng-app="tempus" ng-controller="home">
   <head>
     <title><%= title %></title>
     <!--Fonts -->
@@ -10,7 +10,6 @@
     <script src="/javascripts/angular/angular.min.js"></script>
     <script src="/javascripts/angular/angular-route.min.js"></script>
     <script src="/javascripts/angular/angular-animate.min.js"></script>
-    <script src="/javascripts/app.js"></script>
   </head>
   <body>
     <div class="content flip" ng-view></div>
@@ -25,4 +24,6 @@
       <% include home %>
     </script>
   <% } %>
+  <script src="/javascripts/app.js"></script>
+
 </html>
