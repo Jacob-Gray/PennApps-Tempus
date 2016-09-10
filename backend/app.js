@@ -14,6 +14,7 @@ var deleteTask = require('./routes/deleteTask');
 var viewTask = require('./routes/viewTask');
 var addSchedule = require('./routes/addSchedule');
 var startTask = require('./routes/startTask');
+var logout = require('./routes/logout');
 
 
 var app = express();
@@ -22,11 +23,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(session({ 
+app.use(session({
   cookieName: 'session',
-  secret: 'something', 
+  secret: 'something',
   duration: 15 * 60 * 1000 ,
-  activeDuration: 15 * 60 * 1000 
+  activeDuration: 15 * 60 * 1000
 }));
 app.use(favicon());
 app.use(logger('dev'));
@@ -43,6 +44,7 @@ app.use('/addSchedule',addSchedule);
 app.use('/deleteTask',deleteTask);
 app.use('/viewTask',viewTask);
 app.use('/startTask',startTask);
+app.use('/logout',logout);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

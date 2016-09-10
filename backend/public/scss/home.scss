@@ -40,7 +40,23 @@ html {
     opacity: 0;
   }
 }
-
+.noti{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#222021;
+  padding:10px;
+  display:none;
+  height:auto;
+  text-align:center;
+  color:white;
+  font-family:"lato";
+  a{
+    color:rgb(156, 17, 53);
+    text-decoration:none;
+  }
+}
 .btn {
   background: rgb(156, 17, 53);
   color: white;
@@ -55,12 +71,15 @@ html {
   text-transform: uppercase;
   font-size: 0.8em;
   border:none;
+  cursor:pointer;
 }
 
 .btn-min {
   color: white;
+  cursor:pointer;
+  
   border: 1px solid white;
-  padding: 7px 15px;
+  padding: 6px 14px;
   margin: 3px;
   min-width: 55px;
   text-align: center;

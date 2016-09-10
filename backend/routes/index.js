@@ -10,12 +10,24 @@ var MongoClient = require('mongodb').MongoClient;
 router.get('/', function(req, res) {
 	res.render('index', {
 		logged_in: req.session.username !== undefined,
-    title: "timer"
+    title: "timer",
+		user: req.session.user
 	});
 });
 
 router.get('/login',function(req,res,next){
-	res.render('home');
+	res.render('index', {
+		logged_in: req.session.username !== undefined,
+		title: "timer",
+		user: req.session.user
+	});
+})
+router.get('/signup',function(req,res,next){
+	res.render('index', {
+		logged_in: req.session.username !== undefined,
+		title: "timer",
+		user: req.session.user
+	});
 })
 
 router.post('/login', function(req, res, next) {
@@ -31,10 +43,10 @@ router.post('/login', function(req, res, next) {
 			}, function(err, document) {
 				if (document.password === password) {
 					req.session.username = email;
-					res.render('index', {
-						logged_in: req.session.username !== undefined,
-						title: document.name
-					});
+					req.session.user = document.name;
+					res.send(true);
+				} else{
+					res.send(false);
 				}
 
 			});

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="tempus" ng-controller="home">
+<html ng-app="tempus" ng-controller=<% if(logged_in){%>"activities"<% }else{%>"home"<%}%>>
 
 <head>
   <base href="/">
@@ -25,14 +25,22 @@
       <a href="/login" class="btn">Login</a>
       <p>Already have an account?</p>
     </header>
-    <div class="content-wrapper">
+    <div class="content-wrapper  <% if(logged_in){%>admin<% } %>">
       <div class="content fade" ng-view></div>
     </div>
   </main>
   <footer>
   </footer>
+  <div class="noti"></div>
 </body>
 <% if(logged_in){ %>
+  <script type="text/ng-template" id="activities.html">
+    <% include activities %>
+  </script>
+  <script>
+  window.current_user = "<%= user %>";
+  </script>
+  <script src="/javascripts/appAdmin.js"></script>
 
   <% } else{ %>
     <script type="text/ng-template" id="login.html">
@@ -44,7 +52,7 @@
     <script type="text/ng-template" id="home.html">
       <% include home %>
     </script>
-    <% } %>
     <script src="/javascripts/app.js"></script>
+    <% } %>
 
 </html>

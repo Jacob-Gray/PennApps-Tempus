@@ -1,10 +1,12 @@
 <div class="signup">
 	<h3>Create Account</h3>
-	<input placeholder="Name" class="name">
-	<input placeholder="Email" class="email">
-	<input placeholder="Password" class="password">
-	<div class="buttons">
-		<button class="btn"> Create Account </button>
-		<a href="#/" class="btn-min"> Back </a>
-	</div>
+	<form class="signup_form">
+		<input placeholder="Name" ng-model="user.name" required>
+		<input type="email" placeholder="Email" ng-model="user.email" required>
+		<input type="password" placeholder="Password" ng-model="user.password" required>
+		<div class="buttons">
+			<button class="btn"> Create Account </button>
+			<a href="/" class="btn-min"> Back </a>
+		</div>
+	</form>
 </div>
