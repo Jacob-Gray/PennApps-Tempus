@@ -16,7 +16,7 @@ router.post('/', function(req, res, next) {
   if(!err) {
     console.log("We are connected");
     db.collection('users').findOne({"_id": email}, function(err, document) {
-    if(document != null){
+    if(document){
       res.send('Email already registered');
     }
     else{
