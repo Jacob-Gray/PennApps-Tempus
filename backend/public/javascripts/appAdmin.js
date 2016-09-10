@@ -7,10 +7,14 @@ page.config(['$routeProvider', '$locationProvider',
 			templateUrl: 'activities.html',
 			controller: 'activities'
 		}).
+		when('/task', {
+			templateUrl: 'task.html',
+			controller: 'task'
+		}).
 		otherwise({
 			redirectTo: '/'
 		});
-		// $locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(true);
 	}
 ]);
 
@@ -27,4 +31,7 @@ page.controller('activities', function($scope, $http) {
 			console.log(data)
 		});
 	});
+});
+page.controller('task', function($scope, $http) {
+
 });
