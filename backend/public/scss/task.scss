@@ -1,0 +1,167 @@
+.title {
+	font-family: "Oswald";
+	font-size: 1.5em;
+	float: left;
+	color: white;
+	opacity: 0.8;
+	margin-left: 0.5em;
+}
+
+.title_activities {
+	font-family: "Lato";
+	color: white;
+	margin-top: 10%;
+	font-size: x-large;
+	font-weight: 300;
+	text-align: center;
+	align-items: center;
+	margin-bottom: 0px;
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+
+}
+
+.title_activities:after{
+	content: "";
+	border-bottom: solid white 1px;
+	flex-grow: 1;
+	margin-left: 8px;
+	margin-top: 5px;
+}
+
+.title_activities:before{
+	content: "";
+	border-bottom: solid white 1px;
+	flex-grow: 1;
+	margin-right: 8px;
+	margin-top: 5px;
+}
+
+.emerald_water {
+	background: linear-gradient(to top left, #085078 , #85D8CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	margin-top: 20px;
+	margin-left: 0px;
+
+}
+
+.title_activities {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px;
+	margin-top: 50px;
+}
+
+label {
+	color: black;
+	font-family: "Lato";
+	margin-top: 20px;
+}
+
+div div {
+	color: black;
+	font-family: "Lato";
+	font-size: large;
+	margin-left: 0px;
+	margin: auto;
+	text-align: left;
+
+}
+
+input {
+	margin: 0px;
+	font-size: x-large;
+}
+
+
+.circular {
+	width: 44px;
+	height: 44px;
+	border-radius: 44px;
+	display: inline-block;
+	margin: 1.5px;
+}
+
+
+.white_box {
+	text-align: center;
+	background-color: white;
+	margin: auto;
+	padding: 25px 15px;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.5) 0 0 4px;
+	max-width: 275px;
+}
+
+.name {
+	display: inline-block;
+	margin-bottom: 25px;
+}
+
+
+.ttitle {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.tname {
+	margin-bottom: 20px;
+}
+
+.frost_dblue {
+	background: linear-gradient(to top left, #000428 , #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.twitch_dpur {
+	background: linear-gradient(to top left, #6441A5 , #2a0845); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+       
+}
+
+
+.aqua_marine {
+	background: linear-gradient(to top left, #1A2980 , #26D0CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
+.joomla {
+	background: linear-gradient(to top left, #1e3c72 , #2a5298); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.curiosity_blue {
+	background: linear-gradient(to top left, #525252 , #3d72b4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.pinot_noir {
+	background: linear-gradient(to top left, #4b6cb7 , #182848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.reef {
+	background: linear-gradient(to top left, #00d2ff , #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.purple_paradise {
+	background: linear-gradient(to top left, #1D2B64 , #F8CDDA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+}
+
+.electric_violet {
+	background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	margin-right: 0px;
+}
+
+
+.buttons {
+	max-width: 250px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.bb {
+	background-color: #000080;
+}
+
+
