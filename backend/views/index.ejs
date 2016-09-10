@@ -1,12 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="tempus" ng-controller="home">
   <head>
+    <base href="/">
     <title><%= title %></title>
+    <!--Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Oswald" rel="stylesheet">
+    <!--StyleSheet -->
     <link rel='stylesheet' href='/stylesheets/app.css' />
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!-- JavaScript -->
+    <script src="/javascripts/angular/angular.min.js"></script>
+    <script src="/javascripts/angular/angular-route.min.js"></script>
+    <script src="/javascripts/angular/angular-animate.min.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="content flip" ng-view></div>
   </body>
+  <% if(logged_in){ %>
+
+  <% } else{ %>
+    <script type="text/ng-template" id="login.html">
+      <% include login %>
+    </script>
+    <script type="text/ng-template" id="home.html">
+      <% include home %>
+    </script>
+  <% } %>
+  <script src="/javascripts/app.js"></script>
+
 </html>

@@ -1,5 +1,64 @@
-.username {
-	height: 10%;
-	width: 10%;
-	color: red;
+.login {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+
+
+div {
+	margin: auto;
+	margin-top: 3%;
+}
+
+.email {
+	font-family: "EB Garamond";
+	font-size: 1.5em;
+	text-align: center;
+	color: black;
+	right: 50%;
+	bottom: 50%;
+	margin-bottom: 10px;
+	width: 75%;
+	border-color: darkturquoise;
+	padding: 1.5%;
+	margin-left: 12%;
+
+}
+
+.password {
+	font-family: "EB Garamond";
+	font-size: 1.5em;
+	text-align: center;
+	color: black;
+	right: 50%;
+	bottom: 40%;
+	width: 75%;
+	border-color: turquoise;
+	padding: 1.5%;
+	margin-left: 12%;
+}
+
+.submit {
+	font-family: "EB Garamond";
+	font-size: 1.5em;
+	text-align: center;
+	color: white;
+	right: 50%;
+	bottom: 30%;
+	margin-top: 40px;
+	width: 79%;
+	padding: 2%;
+	background-color: darkmagenta;
+	margin-left: 12%;
+}
+
+p {
+	font-family: "Quicksand";
+	font-size: 4.5em;
+	text-align: center;
+	margin: 0.7em;
+	color: darkmagenta;
+	width: 70%;
+	margin-top: 25%;
+
+}
 }
