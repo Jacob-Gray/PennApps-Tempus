@@ -1,7 +1,7 @@
 var page = angular.module('tempus', ['ngRoute', 'ngAnimate']);
 
-page.config(['$routeProvider',
-    function($routeProvider) {
+page.config(['$routeProvider','$locationProvider',
+    function($routeProvider, $locationProvider) {
         $routeProvider.
         when('/', {
             templateUrl: 'home.html',
@@ -13,6 +13,7 @@ page.config(['$routeProvider',
         otherwise({
             redirectTo: '/'
         });
+        $locationProvider.html5Mode(true);
     }
 ]);
 page.controller('home', function($scope) {
