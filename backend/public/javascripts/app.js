@@ -61,7 +61,7 @@ page.controller('signup', function($scope, $http) {
 			data: $scope.user
 		}
 		$http(req).then(function(data) {
-      $(".noti").html("Your account has been created, please <a href='#login'>Login</a>").fadeIn();
+      $(".noti").html("Your account has been created, please <a href='/login'>Login</a>").fadeIn();
 		}, function(data) {
 			console.log(data)
 		});

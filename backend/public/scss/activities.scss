@@ -1,10 +1,22 @@
-.admin .content{
-	display:block;
-	.buttons{
-		text-align:right;
-		margin-bottom:10px
+.admin {
+	min-height: 100vh;
+	height: auto;
+
+	main {
+		padding-bottom: 10px;
+		min-height: 100vh;
+	}
+
+	.content {
+		display: block;
+
+		.buttons {
+			text-align: right;
+			margin-bottom: 10px;
+		}
 	}
 }
+
 .title {
 	font-family: "Oswald";
 	font-size: 1.5em;
@@ -24,8 +36,7 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin-bottom:5px;
-
+	margin-bottom: 5px;
 }
 
 .title_activities:after {
@@ -34,7 +45,6 @@
 	flex-grow: 1;
 	margin-left: 8px;
 	margin-top: 5px;
-
 }
 
 .tile_pane:empty {
@@ -43,7 +53,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 }
 
 .tile_pane:empty:after {
@@ -51,7 +60,6 @@
 	color: white;
 	opacity: 0.7;
 	font-family: "Lato";
-
 }
 
 .tile_pane {
@@ -59,8 +67,6 @@
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-
-
 }
 
 .tile {
@@ -73,71 +79,80 @@
 	border: 1px solid #003333;
 	display: inline-block;
 	flex-grow: 1;
-
-
 }
 
 .frost_dblue {
-	background: linear-gradient(to top left, #000428 , #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #000428 , #004e92);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .twitch_dpur {
-	background: linear-gradient(to top left, #6441A5 , #2a0845); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+	background: linear-gradient(to top left, #6441A5 , #2a0845);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .fb_blue {
-	background: linear-gradient(to top left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #00c6ff , #0072ff);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .aqua_marine {
-	background: linear-gradient(to top left, #1A2980 , #26D0CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+	background: linear-gradient(to top left, #1A2980 , #26D0CE);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .bright_vault {
-	background: linear-gradient(to top left, #00d2ff , #928DAB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #00d2ff , #928DAB);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .joomla {
-	background: linear-gradient(to top left, #1e3c72 , #2a5298); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+	background: linear-gradient(to top left, #1e3c72 , #2a5298);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .shadow_night {
-	background: linear-gradient(to top left, #000000 , #53346D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+	background: linear-gradient(to top left, #000000 , #53346D);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .curiosity_blue {
-	background: linear-gradient(to top left, #525252 , #3d72b4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #525252 , #3d72b4);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .almost {
-	background: linear-gradient(to top left, #ddd6f3 , #faaca8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #ddd6f3 , #faaca8);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .pinot_noir {
-	background: linear-gradient(to top left, #4b6cb7 , #182848); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #4b6cb7 , #182848);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .reef {
-	background: linear-gradient(to top left, #00d2ff , #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #00d2ff , #3a7bd5);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .calm_darya {
-	background: linear-gradient(to top left, #5f2c82 , #49a09d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to top left, #5f2c82 , #49a09d);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .purple_paradise {
-	background: linear-gradient(to top left, #1D2B64 , #F8CDDA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+	background: linear-gradient(to top left, #1D2B64 , #F8CDDA);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	;
 }
 
 .electric_violet {
-	background: linear-gradient(to left, #83a4d4 , #b6fbff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to left, #83a4d4 , #b6fbff);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .emerald_water {
-	background: linear-gradient(to top left, #085078 , #85D8CE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+	background: linear-gradient(to top left, #085078 , #85D8CE);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
