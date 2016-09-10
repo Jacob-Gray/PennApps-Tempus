@@ -9,6 +9,11 @@ var session = require('client-sessions');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var register = require('./routes/register');
+var addTask = require('./routes/addTask');
+var deleteTask = require('./routes/deleteTask');
+var viewTask = require('./routes/viewTask');
+var addSchedule = require('./routes/addSchedule');
+
 
 var app = express();
 
@@ -32,6 +37,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/register',register);
+app.use('/addTask',addTask);
+app.use('/addSchedule',addSchedule);
+app.use('/deleteTask',deleteTask);
+app.use('/viewTask',viewTask);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

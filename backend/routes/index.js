@@ -4,9 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 
-function getConnection(){
 
-}
 
 /* GET home page. */
 router.get('/', function(req, res) {
