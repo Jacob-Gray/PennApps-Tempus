@@ -12,20 +12,21 @@
   <link rel='stylesheet' href='/stylesheets/app.css' />
   <!-- JavaScript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
   <script src="/javascripts/angular/angular.min.js"></script>
   <script src="/javascripts/angular/angular-route.min.js"></script>
   <script src="/javascripts/angular/angular-animate.min.js"></script>
 </head>
 
-<body>
-  <main>
+<body class="<% if(logged_in){%>admin<% } %>">
+  <main >
     <!-- Header -->
     <header>
       <a href="/" class="title">Tempus</a>
       <a href="/login" class="btn">Login</a>
       <p>Already have an account?</p>
     </header>
-    <div class="content-wrapper  <% if(logged_in){%>admin<% } %>">
+    <div class="content-wrapper">
       <div class="content fade" ng-view></div>
     </div>
   </main>
@@ -36,6 +37,12 @@
 <% if(logged_in){ %>
   <script type="text/ng-template" id="activities.html">
     <% include activities %>
+  </script>
+  <script type="text/ng-template" id="task.html">
+    <% include task %>
+  </script>
+  <script type="text/ng-template" id="schedule.html">
+    <% include schedule %>
   </script>
   <script>
   window.current_user = "<%= user %>";
