@@ -28,10 +28,10 @@ page.controller('activities', function($scope, $http) {
 		$scope.tasks = data.data[0].tasks;
 	});
 
-	$scope.showTask = function(){
+	$scope.showTask = function() {
 		$(".white_box_wrapper").addClass("show");
 	}
-	$scope.hideTask = function(){
+	$scope.hideTask = function() {
 		$(".white_box_wrapper").removeClass("show");
 	}
 
@@ -133,5 +133,47 @@ page.controller('task', function($scope, $http) {
 });
 
 page.controller('schedule', function($scope, $http) {
+	var schedule = [],
+		first_point = false;
+	$http({
+		method: 'POST',
+		url: '/viewTask'
+	}).then(function(data) {
+		console.log(data.data[0].tasks)
+		$scope.tasks = data.data[0].tasks;
+	});
 
+	$scope.addCurrent = function($event, $el) {
+		$(".task-item.active").removeClass("active");
+		$($event.currentTarget).addClass("active");
+		$scope.currentTask = {
+			name: $el.task.name,
+			style: $el.task.style
+		};
+	}
+
+	$(".morning_box li, .afternoon_box li").on("click", function() {
+		if (first_point === false) {
+			first_point = parseInt($(this).attr("data-time"));
+		} else {
+
+			var x = $(".morning_box li, .afternoon_box li");
+
+			for (var y = first_point; y <= parseInt($(this).attr("data-time")); y++) {
+				console.log(y)
+				x[y].classList.add($scope.currentTask.style)
+			}
+			schedule.push({
+				task: $scope.currentTask.name,
+				start: first_point,
+				end: parseInt($(this).attr("data-time"))
+			});
+
+			$(".task-item.active").removeClass("active");
+
+			$scope.currentTask = "";
+			first_point = false;
+		}
+		console.log(schedule);
+	});
 });

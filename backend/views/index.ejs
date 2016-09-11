@@ -23,6 +23,7 @@
     <!-- Header -->
     <header>
       <a href="/" class="title">Tempus</a>
+
       <a href="/login" class="btn">Login</a>
       <p>Already have an account?</p>
     </header>
@@ -36,7 +37,7 @@
 </body>
 <% if(logged_in){ %>
   <% include task %>
-  
+
   <script type="text/ng-template" id="activities.html">
     <% include activities %>
   </script>

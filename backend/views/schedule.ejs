@@ -1,37 +1,42 @@
-<h3 class="title_schedule"> Schedule </h3>
+<h3 class="title_activities"> Schedule </h3>
+<div class="buttons">
+  <a class="btn-min" href="/">Back</a>
+  <a class="btn" ng-click="showTask()">Save</a>
+</div>
 <div class="schedule_wrapper">
 <div class="morning_box">
 	<ul>
-		<li> 12:00 AM </li>
-		<li> 1:00 AM </li>
-		<li> 2:00 AM </li>
-		<li> 3:00 AM </li>
-		<li> 4:00 AM </li>
-		<li> 5:00 AM </li>
-		<li> 6:00 AM </li>
-		<li> 7:00 AM </li>
-		<li> 8:00 AM </li>
-		<li> 9:00 AM </li>
-		<li> 10:00 AM </li>
-		<li> 11:00 AM </li>
+		<li data-time="0"> 12:00 AM </li>
+		<li data-time="1"> 1:00 AM </li>
+		<li data-time="2"> 2:00 AM </li>
+		<li data-time="3"> 3:00 AM </li>
+		<li data-time="4"> 4:00 AM </li>
+		<li data-time="5"> 5:00 AM </li>
+		<li data-time="6"> 6:00 AM </li>
+		<li data-time="7"> 7:00 AM </li>
+		<li data-time="8"> 8:00 AM </li>
+		<li data-time="9"> 9:00 AM </li>
+		<li data-time="10"> 10:00 AM </li>
+		<li data-time="11"> 11:00 AM </li>
 	</ul>
 	</div>
-<div class="transparent_box"></div>
+<div class="transparent_box">
+	<div ng-repeat="task in tasks" class="task-item {{task.style}}" data-style="{{task.style}}" data-name="{{task.name}}" ng-click="addCurrent($event, this)">{{task.name}}</div>
+</div>
 <div class="afternoon_box">
 	<ul>
-		<li> 12:00 PM </li>
-		<li> 1:00 PM </li>
-		<li> 2:00 PM </li>
-		<li> 3:00 PM </li>
-		<li> 4:00 PM </li>
-		<li> 5:00 PM </li>
-		<li> 6:00 PM </li>
-		<li> 7:00 PM </li>
-		<li> 8:00 PM </li>
-		<li> 9:00 PM </li>
-		<li> 10:00 PM </li>
-		<li> 11:00 PM </li>
+		<li data-time="12"> 12:00 PM </li>
+		<li data-time="13"> 1:00 PM </li>
+		<li data-time="14"> 2:00 PM </li>
+		<li data-time="15"> 3:00 PM </li>
+		<li data-time="16"> 4:00 PM </li>
+		<li data-time="17"> 5:00 PM </li>
+		<li data-time="18"> 6:00 PM </li>
+		<li data-time="19"> 7:00 PM </li>
+		<li data-time="20"> 8:00 PM </li>
+		<li data-time="21"> 9:00 PM </li>
+		<li data-time="22"> 10:00 PM </li>
+		<li data-time="23"> 11:00 PM </li>
 	</ul>
 </div>
 </div>
-
