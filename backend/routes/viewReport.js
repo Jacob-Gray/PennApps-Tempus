@@ -7,7 +7,6 @@ var dateFormat = require('dateformat');
 
 router.post('/', function(req, res) {
   if(req.session && req.session.username){
-  	console.log(req.session.username);
   	var email = req.session.username;
 
     var startDate = new Date();
@@ -16,12 +15,12 @@ startDate.setSeconds(00);
 startDate.setHours(00);
 startDate.setMinutes(00);
 
-console.log(startDate);
 var dateMidnight = new Date(startDate);
 dateMidnight.setHours(23);
 dateMidnight.setMinutes(59);
 dateMidnight.setSeconds(59);
-  	//console.log(startDate);
+  	console.log(startDate);
+  	console.log(dateMidnight);
     //startDate = dateFormat(startDate,"yyyy-mm-ddThh:MM:ssZ");
     //console.log(startDate);
 	MongoClient.connect("mongodb://localhost:27017/timetracker", function(err, db) {
@@ -35,19 +34,23 @@ dateMidnight.setSeconds(59);
 	}
 	else{
     var finalJsonObject =[];
-       
+    console.log("-------------------------------------------------")
+    console.log(document)
         document.forEach(function(entry){
+          console.log("ENTRY")
           //console.log(entry.schedule[0].tasks);
           var tasks = entry.schedule[0].tasks;
           for(var task in tasks){
+console.log("hours")
             var plannedHours = parseInt((new Date(tasks[task].end) - new Date(tasks[task].start))/(1000*60*60));
             console.log(plannedHours);
             var actualHours = parseInt((new Date(tasks[task].endDate) - new Date(tasks[task].startDate))/(1000*60*60));
+            console.log(actualHours)
             //console.log(actualHours);
             finalJsonObject.push({"name":tasks[task].name,"plannedHours":plannedHours,"actualHours":actualHours});
           }
         })
-				res.send(finalJsonObject);		
+				res.send(finalJsonObject);
 	}
   });
 }
@@ -62,6 +65,6 @@ dateMidnight.setSeconds(59);
 //db.schedules.find({"_id":"bxu@gmail.com","schedule.tasks": {$elemMatch: {start: new Date("2016-09-10T12:00:00Z")} } });
 
         // Close the DB
-        
+
 
 module.exports = router;

@@ -24,7 +24,6 @@ page.controller('activities', function($scope, $http) {
 		method: 'POST',
 		url: '/viewTask'
 	}).then(function(data) {
-		console.log(data.data[0].tasks)
 		$scope.tasks = data.data[0].tasks;
 	});
 
@@ -33,6 +32,60 @@ page.controller('activities', function($scope, $http) {
 	}
 	$scope.hideTask = function() {
 		$(".white_box_wrapper").removeClass("show");
+	}
+
+	$http({
+		method: 'POST',
+		url: '/viewReport',
+	}).then(function(data) {
+		console.log(data)
+	});
+
+	$scope.startTimer = function($event, $el) {
+		if (!$scope.timerRunning) {
+			$scope.timerRunning = true;
+			var req = {
+				method: 'POST',
+				url: '/startTask',
+				data: {
+					"name": $el.task.name,
+					"start": Date.now(),
+					"schedule": "Monday"
+				}
+			}
+			$http(req).then(function(data) {
+				console.log(data)
+			});
+
+			$($event.currentTarget).addClass("timing")
+
+			$(".header-timer").fadeIn();
+			var time = {};
+			time.min = 0;
+			time.sec = 0;
+			time.hour = 0;
+			renderedTime = "";
+			$(".header-timer .time").html("0:00");
+			$scope.timerInterval = setInterval(function() {
+				time.sec++;
+				if (time.sec > 59) {
+					time.sec = 0;
+					time.min++;
+					if (time.min > 59) {
+						time.min = 0;
+						time.hour++;
+					}
+				}
+				renderedTime = (time.hour > 0 ? time.hour + ":" : "") + time.min + ":" + (time.sec < 10 ? "0" : "") + time.sec;
+				$(".header-timer .time").html(renderedTime);
+			}, 1000);
+			$(".header-timer .timer-text").html($el.task.name);
+		} else {
+			$(".header-timer").fadeOut();
+			$scope.timerRunning = false;
+
+			clearInterval($scope.timerInterval);
+		}
 	}
 
 	$("header p").html("Welcome to Tempus, " + window.current_user + "!");
@@ -135,6 +188,21 @@ page.controller('task', function($scope, $http) {
 page.controller('schedule', function($scope, $http) {
 	var schedule = [],
 		first_point = false;
+
+	$scope.create = function() {
+		$http({
+			method: 'POST',
+			url: '/addSchedule',
+			data: {
+				"tasks": schedule,
+				"name": "Monday"
+			}
+		}).then(function(data) {
+			console.log(data)
+		});
+	}
+
+	$scope.currentTask = false;
 	$http({
 		method: 'POST',
 		url: '/viewTask'
@@ -153,27 +221,26 @@ page.controller('schedule', function($scope, $http) {
 	}
 
 	$(".morning_box li, .afternoon_box li").on("click", function() {
-		if (first_point === false) {
+		if (first_point === false && $scope.currentTask !== false) {
 			first_point = parseInt($(this).attr("data-time"));
-		} else {
+		} else if ($scope.currentTask !== false) {
 
 			var x = $(".morning_box li, .afternoon_box li");
 
 			for (var y = first_point; y <= parseInt($(this).attr("data-time")); y++) {
-				console.log(y)
 				x[y].classList.add($scope.currentTask.style)
 			}
 			schedule.push({
-				task: $scope.currentTask.name,
-				start: first_point,
-				end: parseInt($(this).attr("data-time"))
+				"task": $scope.currentTask.name,
+				"start": new Date(new Date().setHours(first_point)).toISOString(),
+				"end": new Date(new Date().setHours(parseInt($(this).attr("data-time")))).toISOString()
 			});
+			console.log(schedule)
 
 			$(".task-item.active").removeClass("active");
 
-			$scope.currentTask = "";
+			$scope.currentTask = false;
 			first_point = false;
 		}
-		console.log(schedule);
 	});
 });
