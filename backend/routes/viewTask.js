@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
   if(req.session && req.session.username){
   	console.log(req.session.username);
   	var email = req.session.username;
@@ -17,7 +17,8 @@ router.get('/', function(req, res) {
   		res.send('No tasks in your profile')
 	}
 	else{
-				res.send(document);		
+    console.log(document)
+				res.send(document);
 	}
   });
 }
@@ -31,6 +32,6 @@ router.get('/', function(req, res) {
 
 
         // Close the DB
-        
+
 
 module.exports = router;

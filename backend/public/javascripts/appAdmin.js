@@ -7,10 +7,6 @@ page.config(['$routeProvider', '$locationProvider',
 			templateUrl: 'activities.html',
 			controller: 'activities'
 		}).
-		when('/task', {
-			templateUrl: 'task.html',
-			controller: 'task'
-		}).
 		when('/schedule', {
 			templateUrl: 'schedule.html',
 			controller: 'schedule'
@@ -24,57 +20,69 @@ page.config(['$routeProvider', '$locationProvider',
 
 page.controller('activities', function($scope, $http) {
 
+	$http({
+		method: 'POST',
+		url: '/viewTask'
+	}).then(function(data) {
+		console.log(data.data[0].tasks)
+		$scope.tasks = data.data[0].tasks;
+	});
+
+	$scope.showTask = function(){
+		$(".white_box_wrapper").addClass("show");
+	}
+	$scope.hideTask = function(){
+		$(".white_box_wrapper").removeClass("show");
+	}
+
 	$("header p").html("Welcome to Tempus, " + window.current_user + "!");
 
 
 	var data = {
-	    labels: ["January", "February", "March", "April", "May", "June", "July"],
-	    datasets: [
-	        {
-	            label: "Recorded time",
-	            backgroundColor: [
-	                'rgba(255, 99, 132, 0.2)',
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 206, 86, 0.2)',
-	                'rgba(75, 192, 192, 0.2)',
-	                'rgba(153, 102, 255, 0.2)',
-	                'rgba(255, 159, 64, 0.2)'
-	            ],
-	            borderColor: [
-	                'rgba(255,99,132,1)',
-	                'rgba(54, 162, 235, 1)',
-	                'rgba(255, 206, 86, 1)',
-	                'rgba(75, 192, 192, 1)',
-	                'rgba(153, 102, 255, 1)',
-	                'rgba(255, 159, 64, 1)'
-	            ],
-	            borderWidth: 1,
-	            data: [65, 59, 80, 81, 56, 55, 40],
-	        },
-	        {
-	            label: "Scheduled time",
-	            backgroundColor: [
-	                'rgba(255, 99, 132, 0.2)',
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 206, 86, 0.2)',
-	                'rgba(75, 192, 192, 0.2)',
-	                'rgba(153, 102, 255, 0.2)',
-	                'rgba(255, 159, 64, 0.2)'
-	            ],
-	            borderColor: [
-	                'rgba(255,99,132,1)',
-	                'rgba(54, 162, 235, 1)',
-	                'rgba(255, 206, 86, 1)',
-	                'rgba(75, 192, 192, 1)',
-	                'rgba(153, 102, 255, 1)',
-	                'rgba(255, 159, 64, 1)'
-	            ],
-	            borderWidth: 1,
-	            data: [69, 57, 83, 9, 34, 88, 56],
-	        }
-	    ]
+		labels: ["January", "February", "March", "April", "May", "June", "July"],
+		datasets: [{
+			label: "Recorded time",
+			backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			],
+			borderColor: [
+				'rgba(255,99,132,1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			],
+			borderWidth: 1,
+			data: [65, 59, 80, 81, 56, 55, 40],
+		}, {
+			label: "Scheduled time",
+			backgroundColor: [
+				'rgba(255, 99, 132, 0.2)',
+				'rgba(54, 162, 235, 0.2)',
+				'rgba(255, 206, 86, 0.2)',
+				'rgba(75, 192, 192, 0.2)',
+				'rgba(153, 102, 255, 0.2)',
+				'rgba(255, 159, 64, 0.2)'
+			],
+			borderColor: [
+				'rgba(255,99,132,1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(255, 206, 86, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)'
+			],
+			borderWidth: 1,
+			data: [69, 57, 83, 9, 34, 88, 56],
+		}]
 	};
-	$scope.renderCanvas = function(){
+	$scope.renderCanvas = function() {
 		var activity_chart = $("#activitychart");
 
 		activity_chart.attr("width", activity_chart.parent().width());
@@ -100,9 +108,30 @@ page.controller('activities', function($scope, $http) {
 });
 
 page.controller('task', function($scope, $http) {
+	$scope.task = {};
+	$scope.task.style = "purple_paradise";
 
+	$(".white_box form").on("submit", function() {
+		$scope.task.sms = ($scope.task.sms) ? true : false;
+		var req = {
+			method: 'POST',
+			url: '/addTask',
+			data: $scope.task
+		}
+		$http(req).then(function() {
+			location = "/";
+		}, function(data) {
+			console.log(data)
+		});
+	});
+
+	$(".white_box .buttons div").on("click", function() {
+		$scope.task.style = this.className.split(" ")[1];
+		$(".white_box .buttons div.selected").removeClass("selected");
+		$(this).addClass("selected");
+	});
 });
 
 page.controller('schedule', function($scope, $http) {
-console.log("what")
+
 });
