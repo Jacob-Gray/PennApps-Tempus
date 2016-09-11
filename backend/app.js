@@ -14,7 +14,9 @@ var deleteTask = require('./routes/deleteTask');
 var viewTask = require('./routes/viewTask');
 var addSchedule = require('./routes/addSchedule');
 var startTask = require('./routes/startTask');
+var endTask = require('./routes/endTask');
 var logout = require('./routes/logout');
+var viewReport = require('./routes/viewReport');
 
 
 var app = express();
@@ -44,7 +46,9 @@ app.use('/addSchedule',addSchedule);
 app.use('/deleteTask',deleteTask);
 app.use('/viewTask',viewTask);
 app.use('/startTask',startTask);
+app.use('/endTask',endTask);
 app.use('/logout',logout);
+app.use('/viewReport',viewReport);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

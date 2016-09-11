@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 
-router.get('/', function(req, res) {
+router.post('/', function(req, res) {
   if(req.session && req.session.username){
   	console.log(req.session.username);
   	var email = req.session.username;

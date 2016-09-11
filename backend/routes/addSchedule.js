@@ -9,11 +9,22 @@ router.post('/', function(req, res) {
   	var scheduleName = req.body.name;
     var length = req.body.length;
     var tasksString = req.body.tasks;
-    var tasks = JSON.parse(tasksString);
+    //var tasks = JSON.parse(tasksString);
+    var tasks = JSON.parse(tasksString, function (key, value) {
+  if (key === 'start' || key ==='end') {
+    //console.log(new Date(value));
+    return new Date(value);
+  } else {
+    return value;
+  }
+});
     console.log(tasks);
-    var startDate = req.body.start;
-    var endDate = req.body.end;
+    //var startDate = req.body.start;
+    //var endDate = req.body.end;
+    //tasks.schedule.tasks['start'] = new Date(schedule.tasks['start']);
+    //console.log(schedule.tasks['start']);
   	//console.log(task);
+
 	MongoClient.connect("mongodb://localhost:27017/timetracker", function(err, db) {
 
   if(!err) {
