@@ -8,9 +8,15 @@
 	}
 
 	.content {
-		display: block;
+		display:block;
+		// display: flex;
+		// flex-direction: column;
 
-		.buttons {
+		> * {
+			width: 100%;
+		}
+
+		> .buttons {
 			text-align: right;
 			margin-bottom: 10px;
 		}
