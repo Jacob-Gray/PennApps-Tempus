@@ -122,7 +122,11 @@ main {
       font-size: 1.5em;
       opacity: 0.8;
       text-decoration: none;
-
+      &:after{
+        content: "Beta";
+      color: gold;
+      font-size: .8em;
+      }
       &:hover {
         opacity: 1;
       }

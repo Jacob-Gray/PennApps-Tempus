@@ -132,6 +132,27 @@
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	&.timing{
+		position:relative;
+		&:after{
+			content:"";
+			height:7px;
+			position:absolute;
+			bottom:0;
+			left:0;
+			right:0;
+			background:repeating-linear-gradient(-45deg, black, black 25px, yellow 25px, yellow 50px);
+			animation: linear rotateBG 1s infinite;
+			@keyframes rotateBG{
+				from{
+					background-position: 0 0;
+				}
+				to{
+					background-position: 70px 0;
+				}
+			}
+		}
+	}
 }
 
 .frost_dblue {

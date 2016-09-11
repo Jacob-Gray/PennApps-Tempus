@@ -11,16 +11,16 @@ router.post('/', function(req, res) {
     // var length = req.body.length;
     console.log(req.body.tasks)
 
-    var tasksString = req.body.tasks;
+    var tasks = req.body.tasks;
     // var tasks = JSON.parse(tasksString);
-    var tasks = JSON.parse(tasksString, function(key, value) {
-    	if (key === 'start' || key === 'end') {
-    		//console.log(new Date(value));
-    		return new Date(value);
-    	} else {
-    		return value;
-    	}
-    });
+    // var tasks = JSON.parse(tasksString, function(key, value) {
+    // 	if (key === 'start' || key === 'end') {
+    // 		//console.log(new Date(value));
+    // 		return new Date(value);
+    // 	} else {
+    // 		return value;
+    // 	}
+    // });
     console.log(tasks);
     //var startDate = req.body.start;
     //var endDate = req.body.end;

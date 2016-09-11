@@ -27,7 +27,8 @@ dateMidnight.setSeconds(59);
   if(!err) {
     console.log("We are connected");
     //db.collection('schedules').find({"_id":email,"schedules":{$exists: true},"schedules.start":{"$gt":startDate,"$lt":dateMidnight}}).toArray(function(err, document) {
-      db.collection('schedules').find({"_id":email,"schedule.tasks": {$elemMatch: {start: {"$gt":startDate,"$lt":dateMidnight} } }}).toArray(function(err, document) {
+      // db.collection('schedules').find({"_id":email,"schedule.tasks": {$elemMatch: {start: {"$gt":startDate,"$lt":dateMidnight} } }}).toArray(function(err, document) {
+      db.collection('schedules').find({"_id":email}).toArray(function(err, document) {
   	if(!document){
   		//console.log(document);
   		res.send('No schedule today')
@@ -37,17 +38,18 @@ dateMidnight.setSeconds(59);
     console.log("-------------------------------------------------")
     console.log(document)
         document.forEach(function(entry){
-          console.log("ENTRY")
-          //console.log(entry.schedule[0].tasks);
+          console.log(entry)
+          console.log(entry.schedule[0].tasks);
           var tasks = entry.schedule[0].tasks;
           for(var task in tasks){
-console.log("hours")
-            var plannedHours = parseInt((new Date(tasks[task].end) - new Date(tasks[task].start))/(1000*60*60));
+            console.log("hours:")
+            var plannedHours = tasks[task].end - tasks[task].start;
             console.log(plannedHours);
-            var actualHours = parseInt((new Date(tasks[task].endDate) - new Date(tasks[task].startDate))/(1000*60*60));
-            console.log(actualHours)
+            var actualHours = tasks[task].endDate - tasks[task].startDate;
+            console.log(tasks[task].task)
             //console.log(actualHours);
-            finalJsonObject.push({"name":tasks[task].name,"plannedHours":plannedHours,"actualHours":actualHours});
+            if(actualHours==0) actualHours = 1;
+            finalJsonObject.push({"name":tasks[task].task,"plannedHours":plannedHours,"actualHours":actualHours});
           }
         })
 				res.send(finalJsonObject);

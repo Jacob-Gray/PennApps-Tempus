@@ -34,12 +34,6 @@ page.controller('activities', function($scope, $http) {
 		$(".white_box_wrapper").removeClass("show");
 	}
 
-	$http({
-		method: 'POST',
-		url: '/viewReport',
-	}).then(function(data) {
-		console.log(data)
-	});
 
 	$scope.startTimer = function($event, $el) {
 		if (!$scope.timerRunning) {
@@ -49,7 +43,7 @@ page.controller('activities', function($scope, $http) {
 				url: '/startTask',
 				data: {
 					"name": $el.task.name,
-					"start": Date.now(),
+					"start": new Date().getHours() - 1,
 					"schedule": "Monday"
 				}
 			}
@@ -81,68 +75,95 @@ page.controller('activities', function($scope, $http) {
 			}, 1000);
 			$(".header-timer .timer-text").html($el.task.name);
 		} else {
-			$(".header-timer").fadeOut();
-			$scope.timerRunning = false;
-
-			clearInterval($scope.timerInterval);
+			$http({
+				method: 'POST',
+				url: '/endTask',
+				data: {
+					"name": $el.task.name,
+					"end": new Date().getHours() - 1,
+					"schedule": "Monday"
+				}
+			}).then(function(data) {
+				$(".header-timer").fadeOut();
+				$scope.timerRunning = false;
+				$($event.currentTarget).removeClass("timing");
+				clearInterval($scope.timerInterval);
+			});
 		}
 	}
 
 	$("header p").html("Welcome to Tempus, " + window.current_user + "!");
 
 
-	var data = {
-		labels: ["January", "February", "March", "April", "May", "June", "July"],
-		datasets: [{
-			label: "Recorded time",
-			backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-			],
-			borderColor: [
-				'rgba(255,99,132,1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-			],
-			borderWidth: 1,
-			data: [65, 59, 80, 81, 56, 55, 40],
-		}, {
-			label: "Scheduled time",
-			backgroundColor: [
-				'rgba(255, 99, 132, 0.2)',
-				'rgba(54, 162, 235, 0.2)',
-				'rgba(255, 206, 86, 0.2)',
-				'rgba(75, 192, 192, 0.2)',
-				'rgba(153, 102, 255, 0.2)',
-				'rgba(255, 159, 64, 0.2)'
-			],
-			borderColor: [
-				'rgba(255,99,132,1)',
-				'rgba(54, 162, 235, 1)',
-				'rgba(255, 206, 86, 1)',
-				'rgba(75, 192, 192, 1)',
-				'rgba(153, 102, 255, 1)',
-				'rgba(255, 159, 64, 1)'
-			],
-			borderWidth: 1,
-			data: [69, 57, 83, 9, 34, 88, 56],
-		}]
-	};
-	$scope.renderCanvas = function() {
-		var activity_chart = $("#activitychart");
 
-		activity_chart.attr("width", activity_chart.parent().width());
-		var myBarChart = new Chart(activity_chart, {
-			type: 'bar',
-			data: data
+
+
+	$scope.renderCanvas = function() {
+
+		$http({
+			method: 'POST',
+			url: '/viewReport',
+		}).then(function(data) {
+
+			var chartStuff = {
+				labels: [],
+				datasets: [{
+					label: "Actual Hours",
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+						'rgba(255,99,132,1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1,
+					data: []
+				}, {
+					label: "Scheduled Hours",
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+						'rgba(255,99,132,1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1,
+					data: []
+				}]
+			};
+
+			data.data.forEach(function(o) {
+				chartStuff.labels.push(o.name);
+				chartStuff.datasets[0].data.push(o.actualHours);
+				chartStuff.datasets[1].data.push(o.plannedHours);
+			})
+			var activity_chart = $("#activitychart");
+
+			activity_chart.attr("width", activity_chart.parent().width());
+			var myBarChart = new Chart(activity_chart, {
+				type: 'bar',
+				data: chartStuff
+			});
 		});
+
 	}
 
 
@@ -198,7 +219,7 @@ page.controller('schedule', function($scope, $http) {
 				"name": "Monday"
 			}
 		}).then(function(data) {
-			console.log(data)
+			location = "/";
 		});
 	}
 
@@ -232,8 +253,8 @@ page.controller('schedule', function($scope, $http) {
 			}
 			schedule.push({
 				"task": $scope.currentTask.name,
-				"start": new Date(new Date().setHours(first_point)).toISOString(),
-				"end": new Date(new Date().setHours(parseInt($(this).attr("data-time")))).toISOString()
+				"start": first_point,
+				"end": parseInt($(this).attr("data-time"))
 			});
 			console.log(schedule)
 
