@@ -157,7 +157,8 @@ page.controller('activities', function($scope, $http) {
 			})
 			var activity_chart = $("#activitychart");
 
-			activity_chart.attr("width", activity_chart.parent().width());
+			activity_chart.attr("width", activity_chart.parent().width()).attr("height",200);
+
 			var myBarChart = new Chart(activity_chart, {
 				type: 'bar',
 				data: chartStuff

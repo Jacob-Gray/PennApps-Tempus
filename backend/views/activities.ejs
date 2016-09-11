@@ -3,5 +3,5 @@
   <a class="btn-min" href="/schedule">Manage Schedule</a>
   <a class="btn" ng-click="showTask()">New task</a>
 </div>
-<canvas id="activitychart" width="100" height="200" ng-init="renderCanvas()"></canvas>
+<canvas id="activitychart" width="100" height="0" ng-init="renderCanvas()" style="width: auto;"></canvas>
 <div class="tile_pane"><div ng-repeat="task in tasks" class="tile {{task.style}}" ng-click="startTimer($event, this)" >{{task.name}}</div></div>

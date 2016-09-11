@@ -37,7 +37,10 @@ dateMidnight.setSeconds(59);
     var finalJsonObject =[];
     console.log("-------------------------------------------------")
     console.log(document)
+    var sendit = false;
         document.forEach(function(entry){
+          if(entry.schedule){
+            sendit = true;
           console.log(entry)
           console.log(entry.schedule[0].tasks);
           var tasks = entry.schedule[0].tasks;
@@ -51,8 +54,9 @@ dateMidnight.setSeconds(59);
             if(actualHours==0) actualHours = 1;
             finalJsonObject.push({"name":tasks[task].task,"plannedHours":plannedHours,"actualHours":actualHours});
           }
+        }
         })
-				res.send(finalJsonObject);
+				if(sendit) res.send(finalJsonObject);
 	}
   });
 }
