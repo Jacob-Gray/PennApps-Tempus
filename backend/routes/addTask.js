@@ -6,7 +6,9 @@ router.post('/', function(req, res) {
   if(req.session && req.session.username){
   	console.log(req.session.username);
   	var email = req.session.username;
-  	var task = req.body.task;
+  	var task = req.body.task,
+      style = req.body.style,
+      sms = req.body.sms;
   	//console.log(task);
 	MongoClient.connect("mongodb://localhost:27017/timetracker", function(err, db) {
   if(!err) {
@@ -17,9 +19,9 @@ router.post('/', function(req, res) {
   		res.send('Task by this name already created. Use it to create schedule')
 	}
 	else{
-		db.collection('schedules').update({"_id":email}, { $addToSet:{"tasks":{"name": task}}},{upsert:true});
-			
-				res.send('Added tag successfully');		
+		db.collection('schedules').update({"_id":email}, { $addToSet:{"tasks":{"name": task, "style": style, "sms": sms}}},{upsert:true});
+
+				res.send('Added tag successfully');
 	}
   });
 }
@@ -33,6 +35,6 @@ router.post('/', function(req, res) {
 
 
         // Close the DB
-        
+
 
 module.exports = router;

@@ -1,0 +1,165 @@
+.white_box_wrapper {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,0.3);
+	flex-grow: 1;
+	display: none;
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	&.show {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation: fade-in .3s;
+	}
+}
+
+.white_box {
+	background-color: white;
+	// margin: auto;
+	padding: 25px 15px;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.5) 0 0 4px;
+	max-width: 275px;
+
+	.emerald_water {
+		background: linear-gradient(to top left, #085078 , #85D8CE);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		margin-top: 20px;
+		margin-left: 0;
+	}
+
+	.title_activities {
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 50px 0 0;
+	}
+
+	label {
+		color: black;
+		font-family: "Lato";
+		margin-top: 20px;
+	}
+	// div div {
+	// 	color: black;
+	// 	font-family: "Lato";
+	// 	font-size: large;
+	// 	margin: auto;
+	// 	text-align: left;
+	// }
+	input {
+		margin: 0;
+		font-size: x-large;
+	}
+
+	.circular {
+		width: 44px;
+		height: 44px;
+		border-radius: 44px;
+		display: inline-block;
+		margin: 1.5px;
+		vertical-align: top;
+	}
+
+	.circular.selected:before {
+		content: "✔";
+		line-height: 44px;
+		color: white;
+	}
+
+	.name {
+		display: block;
+		font-size: 0.8em;
+		width: 100%;
+		padding: 4px 6px;
+		box-sizing: border-box;
+		margin-bottom: 15px;
+	}
+
+	.ttitle {
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.tname {
+		margin-bottom: 15px;
+	}
+
+	.frost_dblue {
+		background: linear-gradient(to top left, #000428 , #004e92);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.twitch_dpur {
+		background: linear-gradient(to top left, #6441A5 , #2a0845);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.aqua_marine {
+		background: linear-gradient(to top left, #1A2980 , #26D0CE);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.joomla {
+		background: linear-gradient(to top left, #1e3c72 , #2a5298);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.curiosity_blue {
+		background: linear-gradient(to top left, #525252 , #3d72b4);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.pinot_noir {
+		background: linear-gradient(to top left, #4b6cb7 , #182848);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.reef {
+		background: linear-gradient(to top left, #00d2ff , #3a7bd5);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.purple_paradise {
+		background: linear-gradient(to top left, #1D2B64 , #F8CDDA);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		;
+	}
+
+	.electric_violet {
+		background: linear-gradient(to left, #83a4d4 , #b6fbff);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		margin-right: 0;
+	}
+
+	.buttons {
+		margin-top: 20px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.tname,
+	.ttitle {
+		color: black;
+		font-family: "Lato";
+		font-size: large;
+		text-align: left;
+	}
+
+	.bb {
+		background-color: #283593;
+	}
+}

@@ -1,0 +1,91 @@
+body {
+	height: 100vh;
+	width: 100%;
+	background: linear-gradient(to top left,#4cddff,#3b9aca 10%,#2d6ca5 20%,#2a5291 27%,#283d81 35%,#222654 50%,#1e1635 63%,#0c0010 93%,#000);
+	background-repeat: no-repeat;
+	
+}
+
+.title {
+	font-family: "Oswald";
+	font-size: 1.5em;
+	float: left;
+	color: white;
+	opacity: 0.8;
+	margin-left: 0.5em;
+}
+
+.title_schedule {
+	font-family: "Lato";
+	color: white;
+	margin-top: 10%;
+	font-size: x-large;
+	font-weight: 300;
+	text-align: center;
+	align-items: center;
+	margin-bottom: 0px;
+	margin-top: 50px;
+	display: flex;
+	justify-content: left;
+
+}
+
+.title_schedule:after{
+	content: "";
+	border-bottom: solid white 1px;
+	flex-grow: 1;
+	margin-left: 8px;
+	margin-top: 5px;
+}
+
+
+.schedule_wrapper {
+	display: flex;
+	height: 70%;
+	vertical-align: middle;
+}
+
+.schedule_wrapper > div {
+	flex-grow: 1;
+}
+
+
+.morning_box, .afternoon_box {
+	background-color: transparent;
+}
+
+
+.transparent_box {
+	cursor: pointer;
+	margin-top: 17px;
+	height: 535px;
+	background-color: transparent;
+	border: 3px dashed rgba(255,255,255,0.5);
+}
+
+ul {
+	padding: 0;
+	list-style: none;
+	font-family: "Lato";
+}
+
+li {
+	padding: 10px 12px;
+	text-align: center;
+	font-size: 1.25em;
+	color: rgba(0,0,0,0.5);
+	border: 1px solid rgba(0,0,0,0.4);
+	border-bottom: none;
+	background-color: white;
+
+}
+
+li:first-of-type {
+	border-radius: 4px 4px 0 0;
+}
+
+li:last-of-type {
+	border-bottom: 1px solid rgba(0,0,0,0.4);
+	border-radius: 0 0 4px 4px;
+}
+

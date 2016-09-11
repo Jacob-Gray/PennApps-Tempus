@@ -17,7 +17,8 @@ router.post('/', function(req, res) {
   		res.send('No tasks in your profile')
 	}
 	else{
-				res.send(document);		
+    console.log(document)
+				res.send(document);
 	}
   });
 }
@@ -31,6 +32,6 @@ router.post('/', function(req, res) {
 
 
         // Close the DB
-        
+
 
 module.exports = router;
