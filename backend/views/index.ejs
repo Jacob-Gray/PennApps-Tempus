@@ -35,11 +35,10 @@
   <div class="noti"></div>
 </body>
 <% if(logged_in){ %>
+  <% include task %>
+  
   <script type="text/ng-template" id="activities.html">
     <% include activities %>
-  </script>
-  <script type="text/ng-template" id="task.html">
-    <% include task %>
   </script>
   <script type="text/ng-template" id="schedule.html">
     <% include schedule %>

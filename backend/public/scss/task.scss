@@ -1,39 +1,28 @@
-.title_activities {
-	font-family: "Lato";
-	color: white;
-	margin-top: 10%;
-	font-size: x-large;
-	font-weight: 300;
-	text-align: center;
-	align-items: center;
-	margin-bottom: 0;
-	margin-top: 50px;
-	display: flex;
-	width:100%;
-	justify-content: center;
-	align-self:flex-start;
-	margin-bottom:10px;
-}
+.white_box_wrapper {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,0.3);
+	flex-grow: 1;
+	display: none;
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
 
-.title_activities:after {
-	content: "";
-	border-bottom: solid white 1px;
-	flex-grow: 1;
-	margin-left: 8px;
-	margin-top: 5px;
-}
-.white_box_wrapper{
-	flex-grow:1;
-	display:flex;
-	align-items: center;
-	justify-content: center;
-}
-.title_activities:before {
-	content: "";
-	border-bottom: solid white 1px;
-	flex-grow: 1;
-	margin-right: 8px;
-	margin-top: 5px;
+		to {
+			opacity: 1;
+		}
+	}
+
+	&.show {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation: fade-in .3s;
+	}
 }
 
 .white_box {
@@ -64,7 +53,6 @@
 		font-family: "Lato";
 		margin-top: 20px;
 	}
-
 	// div div {
 	// 	color: black;
 	// 	font-family: "Lato";
@@ -72,7 +60,6 @@
 	// 	margin: auto;
 	// 	text-align: left;
 	// }
-
 	input {
 		margin: 0;
 		font-size: x-large;
@@ -86,16 +73,17 @@
 		margin: 1.5px;
 		vertical-align: top;
 	}
-	.circular.selected:before{
+
+	.circular.selected:before {
 		content: "✔";
-    line-height: 44px;
-    color: white;
+		line-height: 44px;
+		color: white;
 	}
 
 	.name {
 		display: block;
-		font-size:0.8em;
-		width:100%;
+		font-size: 0.8em;
+		width: 100%;
 		padding: 4px 6px;
 		box-sizing: border-box;
 		margin-bottom: 15px;
@@ -159,14 +147,16 @@
 
 	.buttons {
 		margin-top: 20px;
-		text-align:center;
+		text-align: center;
 		margin-bottom: 20px;
 	}
-	.tname, .ttitle{
-			color: black;
-			font-family: "Lato";
-			font-size: large;
-			text-align: left;
+
+	.tname,
+	.ttitle {
+		color: black;
+		font-family: "Lato";
+		font-size: large;
+		text-align: left;
 	}
 
 	.bb {

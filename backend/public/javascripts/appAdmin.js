@@ -7,10 +7,6 @@ page.config(['$routeProvider', '$locationProvider',
 			templateUrl: 'activities.html',
 			controller: 'activities'
 		}).
-		when('/task', {
-			templateUrl: 'task.html',
-			controller: 'task'
-		}).
 		when('/schedule', {
 			templateUrl: 'schedule.html',
 			controller: 'schedule'
@@ -24,6 +20,20 @@ page.config(['$routeProvider', '$locationProvider',
 
 page.controller('activities', function($scope, $http) {
 
+	$http({
+		method: 'POST',
+		url: '/viewTask'
+	}).then(function(data) {
+		console.log(data.data[0].tasks)
+		$scope.tasks = data.data[0].tasks;
+	});
+
+	$scope.showTask = function(){
+		$(".white_box_wrapper").addClass("show");
+	}
+	$scope.hideTask = function(){
+		$(".white_box_wrapper").removeClass("show");
+	}
 
 	$("header p").html("Welcome to Tempus, " + window.current_user + "!");
 

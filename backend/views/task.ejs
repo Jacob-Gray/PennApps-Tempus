@@ -1,10 +1,9 @@
-<h3 class="title_activities"> Create Your Activity </h3>
-<div class="white_box_wrapper">
+<div class="white_box_wrapper" ng-controller="task">
 	<div class="white_box">
 		<form>
 		<div class="fill_name">
 			<div class="tname"> Name of Task: </div>
-			<input placeholder="Task name" class="name" ng-model="task.name" required>
+			<input placeholder="Task name" class="name" ng-model="task.task" required>
 			<label>
 				<input type="checkbox" ng-model="task.sms">
 				Enable SMS reminders
@@ -26,7 +25,7 @@
 
 			<div class="save_back">
 				<button class="btn"> Save </button>
-				<a class="btn bb" href="/"> Back </a>
+				<div class="btn bb" ng-click="hideTask()"> Back </div>
 			</div>
 		</div>
 
