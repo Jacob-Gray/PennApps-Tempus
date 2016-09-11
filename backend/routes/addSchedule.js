@@ -6,18 +6,21 @@ router.post('/', function(req, res) {
   if(req.session && req.session.username){
   	console.log(req.session.username);
   	var email = req.session.username;
+    console.log(req.body.name)
   	var scheduleName = req.body.name;
-    var length = req.body.length;
+    // var length = req.body.length;
+    console.log(req.body.tasks)
+
     var tasksString = req.body.tasks;
-    //var tasks = JSON.parse(tasksString);
-    var tasks = JSON.parse(tasksString, function (key, value) {
-  if (key === 'start' || key ==='end') {
-    //console.log(new Date(value));
-    return new Date(value);
-  } else {
-    return value;
-  }
-});
+    // var tasks = JSON.parse(tasksString);
+    var tasks = JSON.parse(tasksString, function(key, value) {
+    	if (key === 'start' || key === 'end') {
+    		//console.log(new Date(value));
+    		return new Date(value);
+    	} else {
+    		return value;
+    	}
+    });
     console.log(tasks);
     //var startDate = req.body.start;
     //var endDate = req.body.end;
@@ -31,14 +34,14 @@ router.post('/', function(req, res) {
     console.log("We are connected");
     db.collection('schedules').find({"_id":email,"schedule.name": scheduleName}).count(function(err,document){
         if(document == 0){
-          db.collection('schedules').update({"_id":email}, { $addToSet:{"schedule":{"name":scheduleName,"length":length,"tasks":tasks}}},{upsert:true});
+          db.collection('schedules').update({"_id":email}, { $addToSet:{"schedule":{"name":scheduleName, "tasks":tasks}}},{upsert:true});
         res.send('Added schedule successfully');
         }
         else{
           res.send('Already have schedule by this name');
         }
     })
-				
+
 	}
   });
 }
@@ -65,6 +68,6 @@ length:
 
 
         // Close the DB
-        
+
 
 module.exports = router;

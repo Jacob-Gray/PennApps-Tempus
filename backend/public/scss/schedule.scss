@@ -8,7 +8,15 @@
 	flex-grow: 1;
 	flex-shrink:0;
 }
-
+.buttons{
+	p{
+		float:left;
+		color:white;
+		font-family:lato;
+		font-weight:300;
+		margin:8px;
+	}
+}
 
 .morning_box, .afternoon_box {
 	background-color: transparent;
