@@ -51,7 +51,7 @@ router.post('/', function(req, res) {
           var queryField = "schedule." + i + ".tasks.$.endDate"; 
           var find= "schedule." + i + ".tasks.name";
           var query = {};
-          query[queryField] = new Date(end);
+          query[queryField] = end;
           console.log(query);
           var findQuery = {};
           findQuery["_id"] = email;

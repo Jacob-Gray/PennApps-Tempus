@@ -50,7 +50,7 @@ router.post('/', function(req, res) {
               var timeTasks = schedules[i].tasks;
               for(var j in timeTasks){
                 if(timeTasks[j].name === task){
-                  timeout = parseInt(timeTasks[j].end - timeTasks[j].start);
+                  timeout = parseInt((timeTasks[j].end - timeTasks[j].start)*60*60*1000);
                   break;
                 }
               }
@@ -62,7 +62,7 @@ router.post('/', function(req, res) {
           var findEnd = "schedule." + i + ".tasks.endDate";
           var findSms = "schedule." + i + ".tasks.sms";
           var query = {};
-          query[queryField] = new Date(start);
+          query[queryField] = start;
           console.log(query);
           var findQuery = {};
           findQuery["_id"] = email;
@@ -108,7 +108,7 @@ router.post('/', function(req, res) {
                 
               
             });
-          }, 5000);
+          }, 30000);
 
           //
           //
