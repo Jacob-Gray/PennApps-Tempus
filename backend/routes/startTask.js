@@ -15,6 +15,7 @@ router.post('/', function(req, res) {
   	console.log(req.session.username);
   	var email = req.session.username;
     var task = req.body.task;
+    console.log(task)
     var start = req.body.start;
     var schedule = req.body.schedule;
 	MongoClient.connect("mongodb://localhost:27017/timetracker", function(err, db) {
@@ -38,7 +39,7 @@ router.post('/', function(req, res) {
         if(item != null){
           cursor.rewind();
 
-        
+
    cursor.nextObject( function(err, documents){
           console.log(documents);
           var schedules = documents.schedule;
@@ -57,16 +58,17 @@ router.post('/', function(req, res) {
               break;
             }
           }
-          var queryField = "schedule." + i + ".tasks.$.startDate"; 
+          var queryField = "schedule." + i + ".tasks.$.startDate";
           var find= "schedule." + i + ".tasks.name";
           var findEnd = "schedule." + i + ".tasks.endDate";
           var findSms = "schedule." + i + ".tasks.sms";
           var query = {};
           query[queryField] = start;
+          console.log("==========================================")
           console.log(query);
           var findQuery = {};
           findQuery["_id"] = email;
-          findQuery[find] = task; 
+          findQuery[find] = task;
           console.log(findQuery);
           db.collection('schedules').update(findQuery,{$set: query},{upsert:true});
           //
@@ -91,8 +93,9 @@ router.post('/', function(req, res) {
                   new_cursor.nextObject(function(err,item){
                     console.log(item);
                     var allTasks = item.tasks;
+                    console.log(task)
                     for(var l in allTasks){
-                      if(allTasks[l].name === task && allTasks[l].sms === 'true'){
+                      if(allTasks[l].name === task && allTasks[l].sms === true){
                         console.log("End date not present and sms enabled. Send Message");
                       nexmo.send_sms('Hi '+ email +' Your task ' + task+ ' exceeded your planned time');
                       }
@@ -100,15 +103,15 @@ router.post('/', function(req, res) {
                         console.log('Sms disabled.');
                       }
                     }
-                    
+
                   })
 
                 }
-              
-                
-              
+
+
+
             });
-          }, 30000);
+          }, 5000);
 
           //
           //
@@ -120,7 +123,7 @@ router.post('/', function(req, res) {
           res.send('No schedule to start task');
         }
     });
-				
+
 	}
   });
 }
@@ -129,6 +132,6 @@ router.post('/', function(req, res) {
   }
 });
         // Close the DB
-        
+
 
 module.exports = router;

@@ -52,7 +52,7 @@ dateMidnight.setSeconds(59);
             console.log(tasks[task].task)
             //console.log(actualHours);
             if(actualHours==0) actualHours = 1;
-            finalJsonObject.push({"name":tasks[task].task,"plannedHours":plannedHours,"actualHours":actualHours});
+            finalJsonObject.push({"name":tasks[task].task,"plannedHours":plannedHours,"actualHours":1});
           }
         }
         })

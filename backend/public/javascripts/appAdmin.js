@@ -42,7 +42,7 @@ page.controller('activities', function($scope, $http) {
 				method: 'POST',
 				url: '/startTask',
 				data: {
-					"name": $el.task.name,
+					"task": $el.task.name,
 					"start": new Date().getHours() - 1,
 					"schedule": "Monday"
 				}
